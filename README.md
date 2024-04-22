@@ -6,34 +6,32 @@
 <br>
 
 ## 🕰️ 가이드 작성 기간
-* 24.03.01일 - 24.04.30일(예정)
+* 24.01.01일 - 24.04.30일
 
 ### 🧑‍🤝‍🧑 작성자 소개
  - gypark
 
 ### ⚙️ 개발 환경
-- `Java 8`
 - `Google Colab`
-- **RAM** : STS 3.9
-- **GPU** : Springboot(2.x)
+- **GPU** : A100 x 4
 
-## 📌 Index
+## 📌 Contents
 #### 개요
-- 프로젝트 배경
+- 프로젝트 배경 및 목적
 - 용어 설명
-#### 딥러닝 모델
-- 딥러닝 모델 선택시 고려사항
-- LLM 모델 분석(Llama2, Solar)
-#### 데이터 구축
-- 데이터 구축 간 고려사항
-- 로그 데이터 전처리
-- Timeseries 데이터 전처리
-#### Downstream Task 최적화
+#### LLM 모델 선정
+- 모델 선정 고려사항
+- Open-LLM 분석(Llama2, Solar)
+#### 데이터 전처리 사례
+- 로그 데이터 전처리 사례
+- Timeseries 데이터 전처리 사례
+#### LLM 성능 개선
 - Fine-tuning
 - Retrieval Augmented Generation(RAG)
 - Prompt-Engineering
+- 한국어 추론 능력
 #### 성능 평가
-- F1 score
-- 정확도
-- 전문가 수동 평가
-#### 참고문헌
+- 이상탐지 유무(정상/비정상) 성능 평가
+- Human Evaluation
+- LLM based Evaluation
+#### References
