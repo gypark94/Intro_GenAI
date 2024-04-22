@@ -1,4 +1,4 @@
-# Intro_GenAI
+# LLM-based-Anomaly-Detection
 LLM(Large Language Model) 기반 이상탐지(Anomaly Detection) 시스템 구축 가이드
 
 ## 🖥️ 프로젝트 소개
