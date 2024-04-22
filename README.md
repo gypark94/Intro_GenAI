@@ -1,8 +1,8 @@
 # Intro_GenAI
-로컬 LLM 구축을 위한 프로세스 가이드
+LLM(Large Language Model) 기반 이상탐지(Anomaly Detection) 시스템 구축 가이드
 
 ## 🖥️ 프로젝트 소개
-로컬 LLM을 구축하는 방법을 소개하는 가이드 문서입니다.
+LLM 기반으로 이상탐지 시스템을 구축하는 방법을 소개하는 가이드 문서입니다.
 <br>
 
 ## 🕰️ 가이드 작성 기간
@@ -11,7 +11,7 @@
 ### 🧑‍🤝‍🧑 작성자 소개
  - gypark
 
-### ⚙️ 개발 환경
+### ⚙️ Demo 개발 환경
 - `Google Colab`
 - **GPU** : A100 x 4
 
