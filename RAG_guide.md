@@ -154,3 +154,22 @@ ensemble_retriever = EnsembleRetriever(
   retrievers=[bm25_retriever, faiss_retriever], weights=[0.5, 0.5]
   )
 ```
+
+
+----------------------------
+
+### Prompt Engineering
+
+양식에 맞춘 출력 형식이 중요한 경우(사업기획서, 보고서)
++ Fewshot Prompt template 적극적으로 활용
++ yaml 파일로 프롬프트 버전을 별도로 관리
++ LangSmith Hub에 업로드 되어있는 완성형 Prmpt pull하여 사용하는 방법
+
+#### 문서 요약 프롬프트
+
+Chain-of-Density 논문
+>> Adams, Griffin, et al. "From sparse to dense: GPT-4 summarization with chain of density prompting." arXiv preprint arXiv:2309.04269 (2023).
+
+5번의 반복을 통해서 계속 요약본을 갈고닦는것
+이전의 Missing Entities를 추가 및 갱신하여 다음 요약 때 Denser Summary를 완성해나감.
+
