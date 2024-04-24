@@ -1,4 +1,4 @@
-# RAG 구조
+# RAG 가이드
 
 ### Tokenizer
 
