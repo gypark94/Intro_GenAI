@@ -1,6 +1,9 @@
-## RAG 구조
+# RAG 구조
+
 -----------------
-# Tokenizer
+
+### Tokenizer
+
 Hugging Face에 BPE가 많이 사용됨.
 혹은 RecursiveTokenizer - 재귀적으로 문단 - 문장 - 단어 순으로 chunk 작업 수행
 --------------------
@@ -12,7 +15,9 @@ Langchain에서는 기본 임베딩 클래스는 두가지 메서드를 제공
 
 중요한 것은 두개에 대해서 임베딩 모델을 같은것을 사용해야한다.
 ------------------
-# OpenEmbeddings
+
+### OpenEmbeddings
+
 OpenAIEmbeddings를 default로 사용하는 경우에 업데이트를 통해서 버전이 달라지는것이 아닌지 확인이 필요함
 
 + 가장 범용적으로 사용. 유료임베딩 방법
@@ -24,7 +29,9 @@ OpenAIEmbeddings를 default로 사용하는 경우에 업데이트를 통해서 
   test-embedding-3-small(가성비) - 512dimension, 1536 dimensions
   text-embedding-3-large
 --------------------
-# CacheBackedEmbeddings
+
+### CacheBackedEmbeddings
+
 임베딩을 저장하거나 임시로 caching하여 다시 계산할 필요가 없도록 함.
 OpenAIEmbedding를 통해서 한번 임베딩 수행한 이후에, 동일한 문서에 대해서는 OpenAIEmbedding를 사용하지 않고 cache에 저장된 데이터를 불러옴.
 그렇지 않으면 동일한 내용에 대해서 OpenAIEmbedding 중복 과금 처리되어서 10명이 NLP 작업을 할 경우에는 계속 과금이 됨.
@@ -33,19 +40,22 @@ OpenAIEmbedding를 통해서 한번 임베딩 수행한 이후에, 동일한 문
 CacheBackedEmbeddings 사용법
 
 'openai_embedding = OpenAIEmbeddings()
-
 store = LocalFileStore("./cache/")
-
 cached_embedder = CacheBackedEmbeddings.from_bytes_store(
   Openai_embedding, store, namespace=openai_embedding.model
 )'
+
 --------------------
- Hugging Face에 있는 임베딩 방법들
+
+Hugging Face에 있는 임베딩 방법들
 리더보드 = https://huggingface.co/spaces/mteb/leaderboard
 (MTEB) 벤치마크 상으로는 OpenAIEmbeddings 뛰어넘는 모델이 있음
 벤치마크를 맹신하지말고 테스트가 필요함.
+
 ---------------------
-정리
+
+###정리
+
 OpenSource
 1. 문서가 주로 영문으로 되어있다면 공개모델을 활용하는 것이 비용적인 측면과 향후 유지 보수에 유리
 2. 임베딩 모델을 구동할 수 있는 서버가 뒷받침 되어야 함
@@ -57,7 +67,8 @@ OpenAIEmbeddings
 3.Cache를 반드시 사용하여 불필요한 과금을 줄일 필요가 있음
 
 -----------------------
-## VectorStore
+
+### VectorStore
 
 랭체인은 수십개의 VectorStore 연동성을 제공 현재 80개
 인기있는 벡터DB
@@ -72,8 +83,10 @@ Chroma
 
 FAISS 벡터 DB - 메타의 Fundamental AI Research 그룹에서 주도적으로 개발
 Dense Vector의 유사성을 신속하게 검색하고 클러스터링하는 오픈소스 라이브러리
+
 ---------------------
-## 전처리에 대한 팁(노하우)
+
+### 전처리에 대한 팁(노하우)
 
 페이지 단위 분할 - 전체 문서를 페이지 단위로 분할
 중요한 metadata 정보를 태깅해서 벡터DB에 넣어주는것이 중요함
