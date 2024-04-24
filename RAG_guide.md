@@ -1,12 +1,12 @@
 # RAG 구조
 
------------------
-
 ### Tokenizer
 
 Hugging Face에 BPE가 많이 사용됨.
 혹은 RecursiveTokenizer - 재귀적으로 문단 - 문장 - 단어 순으로 chunk 작업 수행
+
 --------------------
+
 임베딩 - 텍스트의 벡터 표현을 만드는 작업
 벡터공간에서 가장 유사한 텍스트를 찾는 Semantic Search 작업을 수행
 Langchain에서는 기본 임베딩 클래스는 두가지 메서드를 제공
