@@ -1,4 +1,4 @@
-# RAG 가이드
+# RAG(Retrieval Augmented Generation) 가이드
 
 ### Tokenizer
 
@@ -7,7 +7,7 @@ Hugging Face에 BPE가 많이 사용됨.
 
 --------------------
 
-임베딩 - 텍스트의 벡터 표현을 만드는 작업
+임베딩(Embedding) - 텍스트의 벡터 표현을 만드는 작업
 벡터공간에서 가장 유사한 텍스트를 찾는 Semantic Search 작업을 수행
 Langchain에서는 기본 임베딩 클래스는 두가지 메서드를 제공
 1. Document를 임베딩
@@ -34,13 +34,13 @@ OpenAIEmbeddings를 default로 사용하는 경우에 업데이트를 통해서 
 
 ### CacheBackedEmbeddings
 
-임베딩을 저장하거나 임시로 caching하여 다시 계산할 필요가 없도록 함.
-OpenAIEmbedding를 통해서 한번 임베딩 수행한 이후에, 동일한 문서에 대해서는 OpenAIEmbedding를 사용하지 않고 cache에 저장된 데이터를 불러옴.
-그렇지 않으면 동일한 내용에 대해서 OpenAIEmbedding 중복 과금 처리되어서 10명이 NLP 작업을 할 경우에는 계속 과금이 됨.
-캐싱된 embedding vector를 가져오는 것을 매우 빠르게 조회 가능.
+사용목적
++ 임베딩을 저장하거나 임시로 caching하여 다시 계산할 필요가 없도록 함.
++ OpenAIEmbedding를 통해서 한번 임베딩 수행한 이후에, 동일한 문서에 대해서는 OpenAIEmbedding를 사용하지 않고 cache에 저장된 데이터를 불러옴.
++ 그렇지 않으면 동일한 내용에 대해서 OpenAIEmbedding 중복 과금 처리되어서 10명이 NLP 작업을 할 경우에는 계속 과금이 됨.
++ 캐싱된 embedding vector를 가져오는 것을 매우 빠르게 조회 가능.
 
-CacheBackedEmbeddings 사용법
-
+CacheBackedEmbeddings 사용 코드
 ```python
 
 openai_embedding = OpenAIEmbeddings()
@@ -53,12 +53,13 @@ cached_embedder = CacheBackedEmbeddings.from_bytes_store(
 
 --------------------
 
-Hugging Face에 있는 임베딩 방법들
-리더보드 = https://huggingface.co/spaces/mteb/leaderboard
-(MTEB) 벤치마크 상으로는 OpenAIEmbeddings 뛰어넘는 모델이 있음
+### 그외 임베딩 방법들(Hugging Face)
+리더보드참고 
+> https://huggingface.co/spaces/mteb/leaderboard (MTEB) 
+벤치마크 상으로는 OpenAIEmbeddings 뛰어넘는 모델이 있음
 벤치마크를 맹신하지말고 테스트가 필요함.
 
-#### 정리
+#### 주요내용 정리
 
 OpenSource
 1. 문서가 주로 영문으로 되어있다면 공개모델을 활용하는 것이 비용적인 측면과 향후 유지 보수에 유리
@@ -74,21 +75,19 @@ OpenAIEmbeddings
 
 ### VectorStore
 
-랭체인은 수십개의 VectorStore 연동성을 제공 현재 80개
-인기있는 벡터DB
-클라우드 방법
-Pinecone
-Weaviate
-ElasticSearch
+랭체인은 수십개의 VectorStore 연동성을 제공 24.03 기준 약 80개
+인기있는 벡터DB 목록
+1. 클라우드 방법
+   Pinecone
+   Weaviate
+   ElasticSearch
+2. 로컬 방법
+   Chroma
+   *FAISS(제작사: Meta Fundamental AI Research)
 
-로컬 방법
-Chroma
-*FAISS
-
-FAISS 벡터 DB - 메타의 Fundamental AI Research 그룹에서 주도적으로 개발
-Dense Vector의 유사성을 신속하게 검색하고 클러스터링하는 오픈소스 라이브러리
-
----------------------
+FAISS 벡터 DB
++ 메타의 Fundamental AI Research 그룹에서 주도적으로 개발
++ Dense Vector의 유사성을 신속하게 검색하고 클러스터링하는 오픈소스 라이브러리
 
 ### 전처리에 대한 팁(노하우)
 
