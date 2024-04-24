@@ -14,6 +14,7 @@ Langchain에서는 기본 임베딩 클래스는 두가지 메서드를 제공
 2. 사용자가 질문하는 것에 대한 임베딩
 
 중요한 것은 두개에 대해서 임베딩 모델을 같은것을 사용해야한다.
+
 ------------------
 
 ### OpenEmbeddings
@@ -28,6 +29,7 @@ OpenAIEmbeddings를 default로 사용하는 경우에 업데이트를 통해서 
 가장 최근에 사용되는 OpenAIEMbedding 모델
   test-embedding-3-small(가성비) - 512dimension, 1536 dimensions
   text-embedding-3-large
+  
 --------------------
 
 ### CacheBackedEmbeddings
