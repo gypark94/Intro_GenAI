@@ -170,6 +170,9 @@ ensemble_retriever = EnsembleRetriever(
 Chain-of-Density 논문
 > Adams, Griffin, et al. "From sparse to dense: GPT-4 summarization with chain of density prompting." arXiv preprint arXiv:2309.04269 (2023).
 
++ 요약에 포함할 정보의 적절한 양을 선택하는 것은 어려운 작업으로
++ 좋은 요약이란 정보의 밀도가 높고, 어렵지 않으면서도 자세하고 Entity 중심이어야함
 + 5번의 반복을 통해서 계속 요약본을 갈고닦는것
 + 이전의 Missing Entities를 추가 및 갱신하여 다음 요약 때 Denser Summary를 완성해나감.
++ 이러한 상충관계를 더 잘 이해하기 위해 chain-of-density 프롬프트를 사용하여 점점 더 밀도가 높은 요약을 요청하여 문제를 해결
 
