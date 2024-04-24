@@ -111,3 +111,44 @@ Plumber를 사용해서 BoundingBox 처리해서 사용
 표 추출
 표에는 중요한 정보가 많아서 정형화된 데이터로 잘 추출하는 것이 중요
 관련 오픈소스 Library - Camelot, PaddleOCR
+
+
+-----
+
+### Retriever
+
+1. Multi-Query Retrieve
+거리 기반 벡터 DB 검색은 유사한 임베딩 문서를 찾음
+그러나 Query 문구가 미묘하게 변경되거나 임베딩이 데이터 의미를 제대로 포착하지 못하는 경우 검색 결과가 달라질 수 있음
+
+--> LLM을 사용해 주어진 사용자 입력 쿼리에 대해 서로 다른 관점에서 여러 쿼리를 생성함으로써 프롬프트 튜닝 프로세스를 자동화
+각 쿼리에 대해 관련 문서 집합을 검색하고 모든 쿼리에서 고유한 유니온을 사용하여 잠재적으로 관련성이 높은 더 큰 문서 집합을 가져옴.
+
+작동방식
+우리가 입력한 질문에 대해서 여러개 잠재적인 쿼리를 만든다.
+Page Rank에 대해 알려줘
++ Page Rank알고리즘의 작동원리는 무엇인가요
++ Page Rank 는 누가 개발했는가
+
+2. Ensemble Retriever
+일반적으로 의미 유사성은 Dense Retriever
+키워드의 경우에는 Sparse Retriever
+Ensemble Retreiver = Sparse Retriever + Dense Retriever
+
+서로 다른 알고리즘의 강점을 활용함으로써 앙상블 리트리버는 단일 알고리즘보다 더 나은 성능을 얻을 수 있음
+앙상블 간에 weight 조절 가능.
+
+'
+initialize the bm25 retreiver and faiss retriever
+bm25_retriever = BM25Retriever.from_texts(doc_list)
+bm25_retriever.k = 2
+
+embedding = OpenAIEmbeddings()
+faiss_vectorstore = FAISS.from_texts(doc_list, embedding)
+faiss_retriever = faiss_vectorstore.as_retriever(search_kwargs={"k": 2})
+
+initialize the ensemble retriever
+ensemble_retriever = EnsembleRetriever(
+  retrievers=[bm25_retriever, faiss_retriever], weights=[0.5, 0.5]
+  )
+'
