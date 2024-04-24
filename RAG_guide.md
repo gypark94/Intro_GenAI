@@ -41,7 +41,7 @@ OpenAIEmbedding를 통해서 한번 임베딩 수행한 이후에, 동일한 문
 
 CacheBackedEmbeddings 사용법
 
-'''python
+```python
 
 openai_embedding = OpenAIEmbeddings()
 store = LocalFileStore("./cache/")
@@ -49,7 +49,7 @@ cached_embedder = CacheBackedEmbeddings.from_bytes_store(
   Openai_embedding, store, namespace=openai_embedding.model
 )
 
-'''
+```
 
 --------------------
 
@@ -142,7 +142,7 @@ Ensemble Retreiver = Sparse Retriever + Dense Retriever
 서로 다른 알고리즘의 강점을 활용함으로써 앙상블 리트리버는 단일 알고리즘보다 더 나은 성능을 얻을 수 있음
 앙상블 간에 weight 조절 가능.
 
-'''python
+```python
 #initialize the bm25 retreiver and faiss retriever
 bm25_retriever = BM25Retriever.from_texts(doc_list)
 bm25_retriever.k = 2
@@ -155,4 +155,4 @@ faiss_retriever = faiss_vectorstore.as_retriever(search_kwargs={"k": 2})
 ensemble_retriever = EnsembleRetriever(
   retrievers=[bm25_retriever, faiss_retriever], weights=[0.5, 0.5]
   )
-'''
+```
