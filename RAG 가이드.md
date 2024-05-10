@@ -1,4 +1,4 @@
-# RAG(Retrieval Augmented Generation) 가이드
+# RAG(Retrieval Augmented Generation) 주요 내용
 
 ### Tokenizer
 
